@@ -72,5 +72,7 @@ public class OOP {
         //thực hành về toán tử instanceof
         System.out.println(coder1 instanceof Person);
         System.out.println(ps1 instanceof Coder);
+        
+        //test git
     }
 }
