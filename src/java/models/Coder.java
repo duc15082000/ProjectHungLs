@@ -12,6 +12,7 @@ public class Coder extends Person{
     //quan hệ Has - A
     //object Student : name - age - sdt
     
+    
     //object Class : 
     private String Programming_Language;
     
@@ -42,5 +43,10 @@ public class Coder extends Person{
         this.Programming_Language = Programming_Language;
     }
     
-    
+    public void inThongTin(){
+        System.out.println("Ten: "+super.getName()+"\n"
+                + "Tuoi: "+super.getAge()+"\n"
+                        + "SDT: "+super.getPhone()+"\n"
+                                + "Language: "+getProgramming_Language());
+    }
 }

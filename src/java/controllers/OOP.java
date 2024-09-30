@@ -13,31 +13,44 @@ import models.Person;
  * @author Admin
  */
 public class OOP {
-    public static void main(String[] args) {
-        
-        //Parameter: phương thức thongBao(String baocao)
-        //Argument: Ở hàm main hay phương khác
-        //thongBao("hom nay nghi hoc som hon 30p")
-        
-        //từ khóa this: phân biệt biến instance với 
-        //biến cục bộ - parameter có cùng tên. 
-        
-        //instanceof() -> trả về true false
-        //Toán tử instanceof()sẽ được sử dụng để kiểm tra xem 1 
-        //đối tượng có thuộc về 1 kiểu dữ liệu cụ thể nào đó hay 
-        //không(có thể là lớp hoặc interface)
-        
-        
-        
-        
-        Coder coder = new Coder();
-        Coder coder1 = new Coder();
-        Person ps1 = new Person();
+    public static void inMenu(){
+        System.out.println("Nhap ngon ngu lap trinh:");
+        System.out.println("1.Java");
+        System.out.println("2.C#");
+        System.out.println("3.C");
+        System.out.println("4.Python");
+    }
+    
+    public static void chonLanguage(Coder coder){
         Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap lua chon: ");
+        int option = sc.nextInt();
+        switch (option) {
+            case 1:
+                coder.setProgramming_Language("Java");
+                break;
+            case 2:
+                coder.setProgramming_Language("C#");
+                break;
+            case 3:
+                coder.setProgramming_Language("C");
+                break;
+            case 4:
+                coder.setProgramming_Language("Python");
+                break;
+        }
+    }
+    
+    public static void main(String[] args) {   
+        Scanner sc = new Scanner(System.in);//Dùng để gọi lớp Scanner
+        
+        //tên Class + biến = new + Constructor();
+        Coder coder = new Coder();//Khởi tạo object Coder, đã truyền vào giá trị mặc định
         
         System.out.println("Nhap ten");
-        String name = sc.next();
-        coder.setName(name);
+        String name = sc.next();//Để người dùng nhập vào
+        
+        coder.setName(name);//chỉnh sửa giá trị thành cái ng dùng nhập vào
         
         
         System.out.println("Nhap tuoi");
@@ -48,30 +61,17 @@ public class OOP {
             coder.setAge(tuoi);
         }
         
-        System.out.println("Nhap tuoi");
-        int tuoi1 = sc.nextInt();
-        coder1.setAge(tuoi);
-        while (coder1.getAge() == 0) {   
-            tuoi = sc.nextInt();
-            coder1.setAge(tuoi);
-        }
-        
         System.out.println("Nhap sdt");
         String sdt = sc.next();
         coder.setPhone(sdt);
         
-        System.out.println("Nhap nn:");
-        String nn = sc.next();
-        coder.setProgramming_Language(nn);
-        
-        System.out.println("Ngon ngu:" + coder.getProgramming_Language());
-        System.out.println("Ten: "+ coder.getName());
-        System.out.println("Tuoi: "+ coder.getAge());
-        System.out.println("SDT: "+ coder.getPhone());
+        inMenu();
+        chonLanguage(coder);
+        coder.inThongTin();
         
         //thực hành về toán tử instanceof
-        System.out.println(coder1 instanceof Person);
-        System.out.println(ps1 instanceof Coder);
+        //System.out.println(coder1 instanceof Person);
+        //System.out.println(ps1 instanceof Coder);
         
         //test git
     }
