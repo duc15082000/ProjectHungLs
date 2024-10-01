@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import models.Coder;
 import models.Person;
@@ -46,28 +47,38 @@ public class OOP {
         
         //tên Class + biến = new + Constructor();
         Coder coder = new Coder();//Khởi tạo object Coder, đã truyền vào giá trị mặc định
-        
+        Coder coder2 = new Coder();
         System.out.println("Nhap ten");
         String name = sc.next();//Để người dùng nhập vào
         
         coder.setName(name);//chỉnh sửa giá trị thành cái ng dùng nhập vào
-        
+        coder2.setName(name);
         
         System.out.println("Nhap tuoi");
         int tuoi = sc.nextInt();
         coder.setAge(tuoi);
+        coder2.setAge(tuoi);
         while (coder.getAge() == 0) {   
             tuoi = sc.nextInt();
             coder.setAge(tuoi);
+            coder2.setAge(tuoi);
         }
         
         System.out.println("Nhap sdt");
         String sdt = sc.next();
         coder.setPhone(sdt);
-        
+        coder2.setPhone(sdt);
         inMenu();
         chonLanguage(coder);
-        coder.inThongTin();
+        inMenu();
+        chonLanguage(coder2);
+        ArrayList<Coder> listcoder = new ArrayList();
+        listcoder.add(coder);
+        listcoder.add(coder2);
+        for (Coder coder1 : listcoder) {
+            System.out.println(coder1.toString());
+        }
+        
         
         //thực hành về toán tử instanceof
         //System.out.println(coder1 instanceof Person);

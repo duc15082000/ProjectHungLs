@@ -43,10 +43,13 @@ public class Coder extends Person{
         this.Programming_Language = Programming_Language;
     }
     
-    public void inThongTin(){
-        System.out.println("Ten: "+super.getName()+"\n"
+    @Override
+    public String toString(){
+        String infor = "Ten: "+super.getName()+"\n"
                 + "Tuoi: "+super.getAge()+"\n"
                         + "SDT: "+super.getPhone()+"\n"
-                                + "Language: "+getProgramming_Language());
+                                + "Language: "+getProgramming_Language();
+        return infor;
     }
+    
 }
