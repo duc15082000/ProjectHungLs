@@ -24,27 +24,29 @@ public class MyFile {
     public static void main(String[] args) throws IOException {
         System.out.println("Nhap ten File de tao moi: ");
         String fileName = sc.nextLine();
-
+        //Khi tạo File -> thì tạo nó ở đâu? 
+        //Đường dẫn tương đối: Tạo File trực tiếp trên Folder đang làm việc
+        //Đường dẫn tuyệt đối: Cho phép mọi người chọn đường dẫn để tạo Files
+        //C:\Java\
         File file1 = taoFile(fileName);
-
         String message = docFile(file1);
         System.out.println(message);
-
-        LinkedList<String> list = new LinkedList();
-
-        ArrayList<String> alist = new ArrayList();
-//        if(checkFile(file1)){
-//            vietFile(file1, mgs);
-//        }else{
-//            System.out.println("File đã tồn tại, thêm nội dung vào cuối File");
-//            vietFile(file1, mgs);
-//        }
+        
+        System.out.println("Viet vao File: ");
+        String mgs = sc.nextLine();
+        if (checkFile(file1)) {
+            vietFile(file1, mgs);
+        } else {
+            System.out.println("File đã tồn tại, thêm nội dung vào cuối File");
+            vietFile(file1, mgs);
+        }
 
     }
 
     public static String docFile(File file) {
         StringBuilder msg = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) { // Sử dụng BufferedReader
+        // Sử dụng BufferedReader đọc file
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 msg.append(line).append("\n"); // Thêm từng dòng vào StringBuilder
@@ -57,24 +59,20 @@ public class MyFile {
 
     public static void vietFile(File file, String message) {
         try {
+            //BufferWriter
+            //PrintWriter
+            //có true sẽ sử dụng append để ghi tiếp vào File
             FileWriter fw = new FileWriter(file, true);
-            fw.write(message + "\n");
+            fw.write(message);
             fw.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Loi ghi file");
+            e.printStackTrace();
         }
-    }
-
-    public static String inMenu() {
-        String a = "Hello";
-        try {
-
-        } catch (Exception e) {
-        }
-        return a;
     }
 
     public static File taoFile(String fileName) throws IOException {
+        //tạo File 
         File myFile = new File(fileName + ".txt");
         if (checkFile(myFile)) {
             System.out.println("File da duoc tao moi");
@@ -85,12 +83,18 @@ public class MyFile {
         }
     }
 
+    //Trả về thông báo File đã được tạo chưa
     public static boolean checkFile(File myFile) throws IOException {
-        if (myFile.createNewFile()) {
-            return true;
-        } else {
-            return false;
+        try {
+            if (myFile.createNewFile()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Loi tao File");
         }
+        return false;
     }
 
 }
